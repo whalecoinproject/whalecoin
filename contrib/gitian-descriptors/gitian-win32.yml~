@@ -17,7 +17,7 @@ remotes:
   "dir": "whalecoin"
 files:
 - "qt-win32-4.8.3-gitian.zip"
-- "boost-win32-1.47.0-gitian.zip"
+- "bboost-win32-1.47.0-gitian.zip"
 - "ppcoin-deps-0.0.1.zip"
 script: |
   #
