@@ -2659,9 +2659,9 @@ bool LoadBlockIndex(bool fAllowNew)
         block.nVersion = 1;
         block.nTime    = 1394711259;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = !fTestNet ? 76410 : 76410;
+        block.nNonce   = !fTestNet ? 434393 : 434393;
         ////GENESIS_BLOCK_CODE
-
+/*
                         //// debug print
                         printf("%s\n", block.GetHash().ToString().c_str());
                         std::cout << block.GetHash().ToString() << std::endl;
@@ -2710,7 +2710,7 @@ bool LoadBlockIndex(bool fAllowNew)
         block.print();
         //assert(block.GetHash() == (!fTestNet ? hashGenesisBlock : hashGenesisBlockTestNet));
         assert(block.CheckBlock());
-
+*/
         // Start new block file
         unsigned int nFile;
         unsigned int nBlockPos;

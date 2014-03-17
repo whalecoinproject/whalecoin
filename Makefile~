@@ -12,7 +12,7 @@ CC            = gcc
 CXX           = g++
 DEFINES       = -DQT_WEBKIT -DQT_GUI -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE -DUSE_IPV6=1 -DHAVE_BUILD_INFO -DLINUX -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED
 CFLAGS        = -m64 -pipe -O2 -D_REENTRANT -Wall -W $(DEFINES)
-CXXFLAGS      = -m64 -pipe -fstack-protector-all --param ssp-buffer-size=1 -O2 -D_REENTRANT -fdiagnostics-show-option -Wall -Wextra -Wno-ignored-qualifiers -Wformat -Wformat-security -Wno-unused-parameter -Wstack-protector $(DEFINES)
+CXXFLAGS      = -m64 -pipe -fstack-protector-all --param ssp-buffer-size=1 -O2 -D_REENTRANT -fdiagnostics-show-option -Wall -Wextra -Wno-return-type -Wformat -Wformat-security -Wno-unused-parameter -Wstack-protector $(DEFINES)
 INCPATH       = -I/usr/share/qt4/mkspecs/linux-g++-64 -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtGui -I/usr/include/qt4 -Isrc -Isrc/json -Isrc/qt -Isrc/leveldb/include -Isrc/leveldb/helpers -Ibuild -Ibuild
 LINK          = g++
 LFLAGS        = -m64 -fstack-protector-all --param ssp-buffer-size=1 -Wl,-O1
@@ -222,6 +222,7 @@ OBJECTS       = build/txdb-leveldb.o \
 		build/scrypt-x86.o \
 		build/scrypt-x86_64.o \
 		build/scrypt.o \
+		build/scrypt-mine.o \
 		build/pbkdf2.o \
 		build/Accumulator.o \
 		build/AccumulatorProofOfKnowledge.o \
