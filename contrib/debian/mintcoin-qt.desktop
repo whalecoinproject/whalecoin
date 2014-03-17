@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=WhaleCoin
+Comment=WhaleCoin P2P Cryptocurrency
+Comment[fr]=WhaleCoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=WhaleCoin, eşten eşe kriptografik sanal para birimi
+Comment[es]=WhaleCoin, una criptomoneda P2P
+Exec=/usr/bin/whalecoin-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/bitcoin80.xpm
+MimeType=x-scheme-handler/whalecoin;
+Categories=Office;

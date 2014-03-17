@@ -1,0 +1,2 @@
+debian/bin/whalecoind usr/bin
+src/whalecoind usr/lib/whalecoin

@@ -1,0 +1,11 @@
+[Protocol]
+exec=whalecoin-qt '%u'
+protocol=whalecoin
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false
