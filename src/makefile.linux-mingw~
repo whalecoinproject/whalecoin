@@ -28,11 +28,11 @@ LIBPATHS= \
  -L"$(DEPSDIR)/openssl-1.0.1b"
 
 LIBS= \
- -l boost_system-mt \
- -l boost_filesystem-mt \
- -l boost_program_options-mt \
- -l boost_thread_win32-mt \
- -l boost_chrono-mt \
+ -l boost_system \
+ -l boost_filesystem \
+ -l boost_program_options \
+ -l boost_thread_win32 \
+ -l boost_chrono \
  -l db_cxx \
  -l ssl \
  -l crypto
