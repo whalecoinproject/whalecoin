@@ -134,7 +134,9 @@ contains(USE_O3, 1) {
     message("32 platform, adding -msse2 flag")
 
     QMAKE_CXXFLAGS += -msse2
+    QMAKE_CXXFLAGS += -msse
     QMAKE_CFLAGS += -msse2
+    QMAKE_CFLAGS += -msse
 }
 
 QMAKE_CXXFLAGS_WARN_ON = -fdiagnostics-show-option -Wall -Wextra -Wno-return-type -Wformat -Wformat-security -Wno-unused-parameter -Wstack-protector
