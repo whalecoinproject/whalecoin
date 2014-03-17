@@ -120,9 +120,6 @@ obj/build.h: FORCE
 version.cpp: obj/build.h
 DEFS += -DHAVE_BUILD_INFO
 
-obj/util.o: uint256.h
-	$(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<
-
 obj/%.o: %.cpp $(HEADERS)
 	$(CXX) -c $(CFLAGS) -o $@ $<
 
