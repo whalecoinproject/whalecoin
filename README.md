@@ -1,31 +1,41 @@
 
-WhaleCoin (WHALE)
+WhaleCoin official development tree
 
-WhaleCoin is an innovative, secure and energy efficient PoW/PoS coin. It uses a faster PoW distribution mechanism to distribute the initial coins, then after 5 weeks the coin is basically transferred to a pure PoS coin, where the generation of the coin is mainly through the PoS interests.
+WhaleCoin - a hybrid scrypt PoW + PoS based cryptocurrency.
 
-WhaleCoin also adopt a variable PoS rate, which gives the highest payout at 20% the first year, then decrease 5% per year until the 4th year it reaches annual interest rate of 5%, then it will remain at this rate.
+* 10 minutes stake spacing
+* 30 minutes PoW spacing
+* Balanced PoW blocks and stakes weighting
+* The PoW subsidy halves every x64 multiply of PoW difficulty
+* The PoS interest halves every x64 multiply of PoS difficulty
+* Maximum PoW reward is 100 coins
+* Maximum PoS reward is 10 coins
+* ~ 2 billion total coins
 
-Because after 5 weeks it is basically a pure PoS coin, it does not need to be intensively mined, as the PoW payout will remain the minimum. Most coins will be generated through PoS, thus it is a coin that will save a lot of energy compared to other coins.
+Development process
+===========================
 
-WhaleCoin will have a total of 70 billion coins. Initially each block will deliver 100000 to 900000 coins randomly. The PoW payout will be halved each week (7 days). After 5 weeks, the PoW payout will be fixed at 1 coin per block.
+Developers work in their own trees, then submit pull requests when
+they think their feature or bug fix is ready.
 
-PoS will start after at least 20 days of holding of the coins in the wallet. With PoS, the coin is more resilient to 51% attack. 
+The patch will be accepted if there is broad consensus that it is a
+good thing.  Developers should expect to rework and resubmit patches
+if they don't match the project's coding conventions (see coding.txt)
+or are controversial.
 
-Other Specifications:
-	- 30 seconds block target
-	- 100000 - 900000 coins per block initially
-	- PoW payout will be halved every week for the first 5 weeks
-	- After 5 weeks, the PoW payout will be fixed at 1 coin per block
-	- Difficulty retargets every block 
-	- PoS variable interests:
-		- 1st year: 20%
-		- 2nd year: 15%
-		- 3rd year: 10%
-		- 4th and subsequent years: 5%
-	- Total coins will be 70 billions
-	- 4 confirmations for transaction, thus fast 2 mins confirmation for transdactions
-	- 50 confirmations for minted blocks
-	- 1% premine for bounties, giveaways, development, support and maintenance, new feature developments etc.
+The master branch is regularly built and tested, but is not guaranteed
+to be completely stable. Tags are regularly created to indicate new
+official, stable release versions of WhaleCoin.
 
-	- Ports: 12788 (connection) and 12789 (RPC)
+Feature branches are created when there are major new features being
+worked on by several people.
 
+From time to time a pull request will become outdated. If this occurs, and
+the pull is no longer automatically mergeable; a comment on the pull will
+be used to issue a warning of closure. The pull will be closed 15 days
+after the warning if action is not taken by the author. Pull requests closed
+in this manner will have their corresponding issue labeled 'stagnant'.
+
+Issues with no commits will be given a similar warning, and closed after
+15 days from their last activity. Issues closed in this manner will be 
+labeled 'stale'.

@@ -77,7 +77,7 @@ static bool Send(SOCKET hSocket, const char* pszSend)
 
 bool RecvLineIRC(SOCKET hSocket, string& strLine)
 {
-    loop
+    while (true)
     {
         bool fRet = RecvLine(hSocket, strLine);
         if (fRet)
@@ -100,7 +100,7 @@ bool RecvLineIRC(SOCKET hSocket, string& strLine)
 
 int RecvUntil(SOCKET hSocket, const char* psz1, const char* psz2=NULL, const char* psz3=NULL, const char* psz4=NULL)
 {
-    loop
+    while (true)
     {
         string strLine;
         strLine.reserve(10000);
@@ -135,7 +135,7 @@ bool Wait(int nSeconds)
 bool RecvCodeLine(SOCKET hSocket, const char* psz1, string& strRet)
 {
     strRet.clear();
-    loop
+    while (true)
     {
         string strLine;
         if (!RecvLineIRC(hSocket, strLine))
@@ -302,16 +302,16 @@ void ThreadIRCSeed2(void* parg)
         }
 
         if (fTestNet) {
-            Send(hSocket, "JOIN #WhaleCoinTEST2\r");
-            Send(hSocket, "WHO #WhaleCoinTEST2\r");
+            Send(hSocket, "JOIN #whalecoinTEST2\r");
+            Send(hSocket, "WHO #whalecoinTEST2\r");
         } else {
-            // randomly join #WhaleCoin00-#WhaleCoin05
+            // randomly join #whalecoin00-#whalecoin05
             // int channel_number = GetRandInt(5);
 
             // Channel number is always 0 for initial release
             int channel_number = 0;
-            Send(hSocket, strprintf("JOIN #WhaleCoin%02d\r", channel_number).c_str());
-            Send(hSocket, strprintf("WHO #WhaleCoin%02d\r", channel_number).c_str());
+            Send(hSocket, strprintf("JOIN #whalecoin%02d\r", channel_number).c_str());
+            Send(hSocket, strprintf("WHO #whalecoin%02d\r", channel_number).c_str());
         }
 
         int64 nStart = GetTime();

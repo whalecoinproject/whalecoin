@@ -43,6 +43,22 @@ extern "C" void scrypt_core(unsigned int *X, unsigned int *V);
 #else
 // Generic scrypt_core implementation
 
+static inline uint32_t le32dec(const void *pp)
+{
+    const uint8_t *p = (uint8_t const *)pp;
+    return ((uint32_t)(p[0]) + ((uint32_t)(p[1]) << 8) +
+        ((uint32_t)(p[2]) << 16) + ((uint32_t)(p[3]) << 24));
+}
+
+static inline void le32enc(void *pp, uint32_t x)
+{
+    uint8_t *p = (uint8_t *)pp;
+    p[0] = x & 0xff;
+    p[1] = (x >> 8) & 0xff;
+    p[2] = (x >> 16) & 0xff;
+    p[3] = (x >> 24) & 0xff;
+}
+
 static inline void xor_salsa8(unsigned int B[16], const unsigned int Bx[16])
 {
     unsigned int x00,x01,x02,x03,x04,x05,x06,x07,x08,x09,x10,x11,x12,x13,x14,x15;
@@ -127,6 +143,46 @@ static inline void scrypt_core(unsigned int *X, unsigned int *V)
         xor_salsa8(&X[0], &X[16]);
         xor_salsa8(&X[16], &X[0]);
     }
+}
+
+
+void scrypt_1024_1_1_256_sp(const char *input, char *output, char *scratchpad)
+{
+    uint8_t B[128];
+    uint32_t X[32];
+    uint32_t *V;
+    uint32_t i, j, k;
+
+    V = (uint32_t *)(((uintptr_t)(scratchpad) + 63) & ~ (uintptr_t)(63));
+
+    PBKDF2_SHA256((const uint8_t *)input, 80, (const uint8_t *)input, 80, 1, B, 128);
+
+    for (k = 0; k < 32; k++)
+        X[k] = le32dec(&B[4 * k]);
+
+    for (i = 0; i < 1024; i++) {
+        memcpy(&V[i * 32], X, 128);
+        xor_salsa8(&X[0], &X[16]);
+        xor_salsa8(&X[16], &X[0]);
+    }
+    for (i = 0; i < 1024; i++) {
+        j = 32 * (X[16] & 1023);
+        for (k = 0; k < 32; k++)
+            X[k] ^= V[j + k];
+        xor_salsa8(&X[0], &X[16]);
+        xor_salsa8(&X[16], &X[0]);
+    }
+
+    for (k = 0; k < 32; k++)
+        le32enc(&B[4 * k], X[k]);
+
+    PBKDF2_SHA256((const uint8_t *)input, 80, B, 128, 1, (uint8_t *)output, 32);
+}
+
+void scrypt_1024_1_1_256(const char *input, char *output)
+{
+    char scratchpad[SCRYPT_SCRATCHPAD_SIZE];
+    scrypt_1024_1_1_256_sp(input, output, scratchpad);
 }
 
 #endif

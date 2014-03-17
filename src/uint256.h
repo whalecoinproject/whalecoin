@@ -7,7 +7,10 @@
 
 #include <limits.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
 #include <string.h>
+#include <string>
 #include <vector>
 
 typedef long long  int64;
@@ -54,6 +57,16 @@ public:
         return ret;
     }
 
+    double getdouble() const
+    {
+        double ret = 0.0;
+        double fact = 1.0;
+        for (int i = 0; i < WIDTH; i++) {
+            ret += fact * pn[i];
+            fact *= 4294967296.0;
+        }
+        return ret;
+    }
 
     base_uint& operator=(uint64 b)
     {
@@ -353,26 +366,22 @@ public:
         return pn[2*n] | (uint64)pn[2*n+1] << 32;
     }
 
-//    unsigned int GetSerializeSize(int nType=0, int nVersion=PROTOCOL_VERSION) const
     unsigned int GetSerializeSize(int nType, int nVersion) const
     {
         return sizeof(pn);
     }
 
     template<typename Stream>
-//    void Serialize(Stream& s, int nType=0, int nVersion=PROTOCOL_VERSION) const
     void Serialize(Stream& s, int nType, int nVersion) const
     {
         s.write((char*)pn, sizeof(pn));
     }
 
     template<typename Stream>
-//    void Unserialize(Stream& s, int nType=0, int nVersion=PROTOCOL_VERSION)
     void Unserialize(Stream& s, int nType, int nVersion)
     {
         s.read((char*)pn, sizeof(pn));
     }
-
 
     friend class uint160;
     friend class uint256;
@@ -381,8 +390,6 @@ public:
 
 typedef base_uint<160> base_uint160;
 typedef base_uint<256> base_uint256;
-
-
 
 //
 // uint160 and uint256 could be implemented as templates, but to keep

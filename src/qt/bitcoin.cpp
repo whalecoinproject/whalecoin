@@ -143,7 +143,7 @@ int main(int argc, char *argv[])
     // Application identification (must be set before OptionsModel is initialized,
     // as it is used to locate QSettings)
     app.setOrganizationName("WhaleCoin");
-    app.setOrganizationDomain("WhaleCoin.su");
+    app.setOrganizationDomain("whalecoin.su");
     if(GetBoolArg("-testnet")) // Separate UI settings for testnet
         app.setApplicationName("WhaleCoin-Qt-testnet");
     else
