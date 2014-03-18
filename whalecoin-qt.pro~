@@ -134,7 +134,9 @@ contains(USE_O3, 1) {
     message("32 platform, adding -msse2 flag")
 
     QMAKE_CXXFLAGS += -msse2
+    QMAKE_CXXFLAGS += -msse
     QMAKE_CFLAGS += -msse2
+    QMAKE_CFLAGS += -msse
 }
 
 QMAKE_CXXFLAGS_WARN_ON = -fdiagnostics-show-option -Wall -Wextra -Wno-return-type -Wformat -Wformat-security -Wno-unused-parameter -Wstack-protector
@@ -276,9 +278,13 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/transactionview.cpp \
     src/qt/walletmodel.cpp \
     src/bitcoinrpc.cpp \
+    src/rpcclient.cpp \
     src/rpcdump.cpp \
+    src/rpcmisc.cpp \
     src/rpcnet.cpp \
+    src/rpcprotocol.cpp \
     src/rpcmining.cpp \
+    src/rpcserver.cpp \
     src/rpcwallet.cpp \
     src/rpcblockchain.cpp \
     src/rpcrawtransaction.cpp \
