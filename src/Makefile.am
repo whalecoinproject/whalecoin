@@ -42,6 +42,7 @@ crypter.h\
 db.h\
 hash.h\
 init.h\
+irc.h\
 kernel.h\
 key.h\
 keystore.h\
@@ -57,6 +58,7 @@ protocol.h\
 rpcclient.h\
 rpcprotocol.h\
 rpcserver.h\
+strlcpy.h\
 script.h\
 scrypt_mine.h\
 scrypt.h\
@@ -115,6 +117,7 @@ libbitcoin_server_a_SOURCES = \
   main.cpp \
   miner.cpp \
   net.cpp \
+  irc.cpp\
   noui.cpp \
   rpcblockchain.cpp \
   rpcmining.cpp \
