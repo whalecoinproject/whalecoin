@@ -38,7 +38,6 @@ clientversion.h\
 coincontrol.h\
 coins.h\
 compat.h\
-core.h\
 crypter.h\
 db.h\
 hash.h\
@@ -139,7 +138,6 @@ libbitcoin_wallet_a_SOURCES = \
 libbitcoin_common_a_SOURCES = \
   allocators.cpp \
   chainparams.cpp \
-  core.cpp \
   hash.cpp \
   key.cpp \
   netbase.cpp \
