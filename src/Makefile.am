@@ -37,7 +37,6 @@ checkpoints.h\
 checkqueue.h\
 clientversion.h\
 coincontrol.h\
-coins.h\
 compat.h\
 crypter.h\
 db.h\
@@ -67,7 +66,6 @@ threadsafety.h\
 tinyformat.h\
 txdb-leveldb.h\
 txdb.h\
-txmempool.h\
 ui_interface.h\
 uint256.h\
 util.h\
@@ -110,7 +108,6 @@ libbitcoin_server_a_SOURCES = \
   bitcoinrpc.cpp\
   chainparams.cpp \
   checkpoints.cpp \
-  coins.cpp \
   init.cpp \
   keystore.cpp \
   leveldbwrapper.cpp \
@@ -124,7 +121,6 @@ libbitcoin_server_a_SOURCES = \
   rpcnet.cpp \
   rpcrawtransaction.cpp \
   txdb.cpp \
-  txmempool.cpp \
   $(JSON_H) \
   $(BITCOIN_CORE_H)
 
