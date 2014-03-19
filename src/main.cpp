@@ -963,7 +963,7 @@ int64 GetProofOfWorkReward(int nHeight)
         return nMinSubsidy;
     }
 
-    //calculate block reward based on block #
+    //calculate block reward based on block # // based on soft cap 21*10^9
     else if(nHeight < 172861) //before the inflection point, so block rewards should be increasing
     {
         nSubsidy = ((int64)(round((1/(1+exp(-(nHeight-86400)/25000)))*1390.31775949352)*10))*COIN;
