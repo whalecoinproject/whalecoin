@@ -25,52 +25,66 @@ DIST_SUBDIRS = . qt test
 .PHONY: FORCE
 # bitcoin core #
 BITCOIN_CORE_H = \
-  addrman.h \
-  alert.h \
-  allocators.h \
-  base58.h bignum.h \
-  bloom.h \
-  chainparams.h \
-  checkpoints.h \
-  checkqueue.h \
-  clientversion.h \
-  coincontrol.h \
-  coins.h \
-  compat.h \
-  core.h \
-  crypter.h \
-  db.h \
-  hash.h \
-  init.h \
-  key.h \
-  keystore.h \
-  leveldbwrapper.h \
-  limitedmap.h \
-  main.h \
-  miner.h \
-  mruset.h \
-  netbase.h \
-  net.h \
-  noui.h \
-  protocol.h \
-  rpcclient.h \
-  rpcprotocol.h \
-  rpcserver.h \
-  script.h \
-  scrypt.h \
-  scrypt_mine.h \
-  serialize.h \
-  sync.h \
-  threadsafety.h \
-  tinyformat.h \
-  txdb.h \
-  txmempool.h \
-  ui_interface.h \
-  uint256.h \
-  util.h \
-  version.h \
-  walletdb.h \
-  wallet.h
+addrman.h\
+alert.h\
+allocators.h\
+base58.h\
+base58.hbignum.h\
+bignum.h\
+bloom.h\
+chainparams.h\
+checkpoints.h\
+checkqueue.h\
+clientversion.h\
+coincontrol.h\
+coins.h\
+compat.h\
+core.h\
+crypter.h\
+db.h\
+hash.h\
+init.h\
+kernel.h
+key.h\
+keystore.h\
+leveldbwrapper.h\
+limitedmap.h\
+main.h\
+miner.h\
+mruset.h\
+net.h\
+netbase.h\
+noui.h\
+protocol.h\
+rpcclient.h\
+rpcprotocol.h\
+rpcserver.h\
+script.h\
+scrypt_mine.h\
+scrypt.h\
+serialize.h\
+sync.h\
+threadsafety.h\
+tinyformat.h\
+txdb-leveldb.h\
+txdb.h\
+txmempool.h\
+ui_interface.h\
+uint256.h\
+util.h\
+version.h\
+wallet.h\
+walletdb.h\
+zerocoin/Accumulator.h\
+zerocoin/AccumulatorProofOfKnowledge.h\
+zerocoin/Coin.h\
+zerocoin/CoinSpend.h\
+zerocoin/Commitment.h\
+zerocoin/ParamGeneration.h\
+zerocoin/Params.h\
+zerocoin/SerialNumberSignatureOfKnowledge.h\
+zerocoin/SpendMetaData.h\
+zerocoin/Zerocoin.h
 
 JSON_H = \
   json/json_spirit.h \
