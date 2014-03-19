@@ -4,7 +4,7 @@
 
 #include "bloom.h"
 
-#include "core.h"
+#include "main.h"
 #include "script.h"
 
 #include <math.h>
