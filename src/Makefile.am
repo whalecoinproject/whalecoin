@@ -30,6 +30,7 @@ alert.h\
 allocators.h\
 base58.h\
 bignum.h\
+bitcoinrpc.h\
 bloom.h\
 chainparams.h\
 checkpoints.h\
@@ -106,6 +107,7 @@ libbitcoin_server_a_SOURCES = \
   alert.cpp \
   rpcserver.cpp \
   bloom.cpp \
+  bitcoinrpc.cpp\
   chainparams.cpp \
   checkpoints.cpp \
   coins.cpp \
