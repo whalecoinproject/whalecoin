@@ -57,7 +57,12 @@ public:
         SETUP                 = 0x00020000,
         // Force blocking, modal message box dialog (not just OS notification)
         MODAL                 = 0x00040000
+        /** Predefined combinations for certain default usage cases */
+        MSG_INFORMATION = ICON_INFORMATION,
+        MSG_WARNING = (ICON_WARNING | OK | MODAL),
+        MSG_ERROR = (ICON_ERROR | OK | MODAL)
     };
+
 
     /** Show message box. */
     boost::signals2::signal<void (const std::string& message, const std::string& caption, int style)> ThreadSafeMessageBox;

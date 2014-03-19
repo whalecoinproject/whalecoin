@@ -68,12 +68,12 @@ void RPCTypeCheck(const Object& o,
     {
         const Value& v = find_value(o, t.first);
         if (!fAllowNull && v.type() == null_type)
-            throw JSONRPCError(RPC_TYPE_ERROR, strprintf("Missing %s", t.first));
+            throw JSONRPCError(RPC_TYPE_ERROR, strprintf("Missing %s",static_cast<const char*>(t.first)));
 
         if (!((v.type() == t.second) || (fAllowNull && (v.type() == null_type))))
         {
             string err = strprintf("Expected type %s for %s, got %s",
-                                   Value_type_name[t.second], t.first, Value_type_name[v.type()]);
+                                   Value_type_name[t.second],static_cast<const char*>(t.first), Value_type_name[v.type()]);
             throw JSONRPCError(RPC_TYPE_ERROR, err);
         }
     }
@@ -175,7 +175,7 @@ string CRPCTable::help(string strCommand) const
         }
     }
     if (strRet == "")
-        strRet = strprintf("help: unknown command: %s\n", strCommand);
+        strRet = strprintf("help: unknown command: %s\n",static_cast<const char*>(strCommand));
     strRet = strRet.substr(0,strRet.size()-1);
     return strRet;
 }
@@ -513,9 +513,9 @@ void StartRPCThreads()
               "If the file does not exist, create it with owner-readable-only file permissions.\n"
               "It is also recommended to set alertnotify so you are notified of problems;\n"
               "for example: alertnotify=echo %%s | mail -s \"Bitcoin Alert\" admin@foo.com\n"),
-                strWhatAmI,
-                GetConfigFile().string(),
-                EncodeBase58(&rand_pwd[0],&rand_pwd[0]+32)),
+                static_cast<const char*>(strWhatAmI),
+                static_cast<const char*>(GetConfigFile().string()),
+                static_cast<const char*>(EncodeBase58(&rand_pwd[0],&rand_pwd[0]+32))),
                 "", CClientUIInterface::MSG_ERROR);
         StartShutdown();
         return;
