@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "bloom.h"
-
+#include "hash.h"
 #include "main.h"
 #include "script.h"
 

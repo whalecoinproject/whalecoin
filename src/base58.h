@@ -18,8 +18,11 @@
 #include <string>
 #include <vector>
 #include "bignum.h"
+#include "hash.h"
 #include "key.h"
 #include "script.h"
+#include "chainparams.h"
+#include "uint256.h"
 
 static const char* pszBase58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
 
