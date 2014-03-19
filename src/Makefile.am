@@ -123,7 +123,6 @@ libbitcoin_server_a_SOURCES = \
   rpcmining.cpp \
   rpcnet.cpp \
   rpcrawtransaction.cpp \
-  txdb.cpp \
   $(JSON_H) \
   $(BITCOIN_CORE_H)
 
