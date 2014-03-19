@@ -7,7 +7,7 @@
 
 #include "serialize.h"
 #include "uint256.h"
-
+#include "main.h"
 #include <assert.h>
 #include <stdint.h>
 
