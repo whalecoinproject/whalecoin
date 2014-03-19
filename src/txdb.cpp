@@ -5,7 +5,7 @@
 
 #include "txdb.h"
 
-#include "core.h"
+#include "main.h"
 #include "uint256.h"
 
 #include <stdint.h>

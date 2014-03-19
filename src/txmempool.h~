@@ -8,7 +8,7 @@
 #include <list>
 
 #include "coins.h"
-#include "main.h"
+#include "core.h"
 #include "sync.h"
 
 /** Fake height value used in CCoins to signify they are only in the memory pool (since 0.8) */
