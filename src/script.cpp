@@ -9,7 +9,6 @@ using namespace std;
 using namespace boost;
 
 #include "script.h"
-#include "hash.h"
 #include "keystore.h"
 #include "bignum.h"
 #include "key.h"
