@@ -29,7 +29,6 @@ addrman.h\
 alert.h\
 allocators.h\
 base58.h\
-base58.hbignum.h\
 bignum.h\
 bloom.h\
 chainparams.h\
