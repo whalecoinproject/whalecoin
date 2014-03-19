@@ -8,8 +8,12 @@
 #include "sync.h"
 #include "ui_interface.h"
 #include "base58.h"
-#include "bitcoinrpc.h"
 #include "db.h"
+#include "rpcserver.h"
+#include "main.h"
+#ifdef ENABLE_WALLET
+#include "wallet.h"
+#endif
 
 #include <boost/asio.hpp>
 #include <boost/asio/ip/v6_only.hpp>
