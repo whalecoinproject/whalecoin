@@ -136,7 +136,6 @@ libbitcoin_wallet_a_SOURCES = \
   $(BITCOIN_CORE_H)
 
 libbitcoin_common_a_SOURCES = \
-  allocators.cpp \
   chainparams.cpp \
   hash.cpp \
   key.cpp \
