@@ -44,7 +44,7 @@ crypter.h\
 db.h\
 hash.h\
 init.h\
-kernel.h
+kernel.h\
 key.h\
 keystore.h\
 leveldbwrapper.h\
