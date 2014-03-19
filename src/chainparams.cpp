@@ -94,7 +94,7 @@ public:
         }
     */
     }
-/*
+
     virtual const CBlock& GenesisBlock() const { return genesis; }
     virtual Network NetworkID() const { return CChainParams::MAIN; }
 
@@ -105,7 +105,7 @@ public:
 protected:
     CBlock genesis;
     vector<CAddress> vFixedSeeds;
-    */
+
 };
 static CMainParams mainParams;
 
@@ -147,9 +147,9 @@ public:
         base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x35)(0x83)(0x94);
         */
     }
-    /*
+
     virtual Network NetworkID() const { return CChainParams::TESTNET; }
-    */
+
 };
 static CTestNetParams testNetParams;
 
@@ -179,20 +179,20 @@ public:
         vSeeds.clear();  // Regtest mode doesn't have any DNS seeds.
         */
     }
-    /*
+
     virtual bool RequireRPCPassword() const { return false; }
     virtual Network NetworkID() const { return CChainParams::REGTEST; }
-    */
+
 };
-/*static CRegTestParams regTestParams;
+static CRegTestParams regTestParams;
 
 static CChainParams *pCurrentParams = &mainParams;
 
 const CChainParams &Params() {
     return *pCurrentParams;
-    */
+
 }
-/*
+
 void SelectParams(CChainParams::Network network) {
     switch (network) {
         case CChainParams::MAIN:
@@ -227,4 +227,4 @@ bool SelectParamsFromCommandLine() {
     }
     return true;
 }
-*/
+
