@@ -81,6 +81,7 @@ zerocoin/ParamGeneration.h\
 zerocoin/Params.h\
 zerocoin/SerialNumberSignatureOfKnowledge.h\
 zerocoin/SpendMetaData.h\
+zerocoin/ZeroTest.h\
 zerocoin/Zerocoin.h
 
 JSON_H = \
