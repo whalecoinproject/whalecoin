@@ -50,7 +50,7 @@ Object CallRPC(const string& strMethod, const Array& params)
         bool fConnected = d.connect(GetArg("-rpcconnect", "127.0.0.1"), GetArg("-rpcport", itostr(Params().RPCPort())));
         if (fConnected) break;
         if (fWait)
-            MilliSleep(1000);
+            Sleep(1000);
         else
             throw runtime_error("couldn't connect to server");
     } while (fWait);
