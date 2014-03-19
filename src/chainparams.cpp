@@ -95,16 +95,16 @@ public:
     */
     }
 
-    virtual const CBlock& GenesisBlock() const { return genesis; }
+    //virtual const CBlock& GenesisBlock() const { return genesis; }
     virtual Network NetworkID() const { return CChainParams::MAIN; }
 
-    virtual const vector<CAddress>& FixedSeeds() const {
+    /*virtual const vector<CAddress>& FixedSeeds() const {
         return vFixedSeeds;
 
-    }
+    }*/
 protected:
-    CBlock genesis;
-    vector<CAddress> vFixedSeeds;
+    //CBlock genesis;
+    //vector<CAddress> vFixedSeeds;
 
 };
 static CMainParams mainParams;
