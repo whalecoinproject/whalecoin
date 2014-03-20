@@ -1,43 +1,26 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2014 The Bitcoin developers
+// Copyright (c) 2009-2012 The Bitcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
-#if defined(HAVE_CONFIG_H)
-#include "bitcoin-config.h"
-#endif
-
-#include "init.h"
-
-#include "addrman.h"
-#include "checkpoints.h"
-#include "main.h"
-#include "miner.h"
-#include "net.h"
-#include "rpcserver.h"
 #include "txdb.h"
-#include "ui_interface.h"
-#include "util.h"
-#ifdef ENABLE_WALLET
-#include "db.h"
-#include "wallet.h"
 #include "walletdb.h"
 #include "bitcoinrpc.h"
+#include "net.h"
+#include "init.h"
+#include "util.h"
+#include "ui_interface.h"
+#include "checkpoints.h"
 #include "zerocoin/ZeroTest.h"
-#endif
-
-#include <stdint.h>
+#include <boost/filesystem.hpp>
+#include <boost/filesystem/fstream.hpp>
+#include <boost/filesystem/convenience.hpp>
+#include <boost/interprocess/sync/file_lock.hpp>
+#include <boost/algorithm/string/predicate.hpp>
+#include <openssl/crypto.h>
 
 #ifndef WIN32
 #include <signal.h>
 #endif
-
-#include <boost/algorithm/string/predicate.hpp>
-#include <boost/filesystem.hpp>
-#include <boost/interprocess/sync/file_lock.hpp>
-#include <openssl/crypto.h>
-#include <boost/filesystem/fstream.hpp>
-#include <boost/filesystem/convenience.hpp>
 
 
 using namespace std;
@@ -68,11 +51,8 @@ void ExitTimeout(void* parg)
 #endif
 }
 
-volatile bool fRequestShutdown = false;
-
 void StartShutdown()
 {
-    fRequestShutdown = true;
 #ifdef QT_GUI
     // ensure we leave the Qt main loop for a clean GUI exit (Shutdown() is called in bitcoin.cpp afterwards)
     uiInterface.QueueShutdown();
@@ -80,60 +60,54 @@ void StartShutdown()
     // Without UI, Shutdown() can simply be started in a new thread
     NewThread(Shutdown, NULL);
 #endif
-
-}
-bool ShutdownRequested()
-{
-    return fRequestShutdown;
 }
 
-static CCoinsViewDB *pcoinsdbview;
-
-void Shutdown()
+void Shutdown(void* parg)
 {
-    strprintf("Shutdown : In progress...\n");
     static CCriticalSection cs_Shutdown;
-    TRY_LOCK(cs_Shutdown, lockShutdown);
-    if (!lockShutdown) return;
+    static bool fTaken;
 
+    // Make this thread recognisable as the shutdown thread
     RenameThread("bitcoin-shutoff");
-    mempool.AddTransactionsUpdated(1);
-    StopRPCThreads();
-    ShutdownRPCMining();
-#ifdef ENABLE_WALLET
-    if (pwalletMain)
-        bitdb.Flush(false);
-    GenerateBitcoins(false, NULL, 0);
-#endif
-    StopNode();
-    UnregisterNodeSignals(GetNodeSignals());
-    {
-        LOCK(cs_main);
-#ifdef ENABLE_WALLET
-        if (pwalletMain)
-            pwalletMain->SetBestChain(chainActive.GetLocator());
-#endif
-        if (pblocktree)
-            pblocktree->Flush();
-        if (pcoinsTip)
-            pcoinsTip->Flush();
-        delete pcoinsTip; pcoinsTip = NULL;
-        delete pcoinsdbview; pcoinsdbview = NULL;
-        delete pblocktree; pblocktree = NULL;
-    }
-#ifdef ENABLE_WALLET
-    if (pwalletMain)
-        bitdb.Flush(true);
-#endif
-    boost::filesystem::remove(GetPidFile());
-    UnregisterAllWallets();
-#ifdef ENABLE_WALLET
-    if (pwalletMain)
-        delete pwalletMain;
-#endif
-    strprintf("Shutdown : done\n");
-}
 
+    bool fFirstThread = false;
+    {
+        TRY_LOCK(cs_Shutdown, lockShutdown);
+        if (lockShutdown)
+        {
+            fFirstThread = !fTaken;
+            fTaken = true;
+        }
+    }
+    static bool fExit;
+    if (fFirstThread)
+    {
+        fShutdown = true;
+        nTransactionsUpdated++;
+//        CTxDB().Close();
+        bitdb.Flush(false);
+        StopNode();
+        bitdb.Flush(true);
+        boost::filesystem::remove(GetPidFile());
+        UnregisterWallet(pwalletMain);
+        delete pwalletMain;
+        NewThread(ExitTimeout, NULL);
+        Sleep(50);
+        printf("WhaleCoin exited\n\n");
+        fExit = true;
+#ifndef QT_GUI
+        // ensure non-UI client gets exited here, but let Bitcoin-Qt reach 'return 0;' in bitcoin.cpp
+        exit(0);
+#endif
+    }
+    else
+    {
+        while (!fExit)
+            Sleep(500);
+        Sleep(100);
+        ExitThread(0);
+    }
+}
 
 void HandleSIGTERM(int)
 {
