@@ -165,6 +165,7 @@ bitcoind_LDADD = \
 if ENABLE_WALLET
 bitcoind_LDADD += libbitcoin_wallet.a
 endif
+bitcoind_SOURCES = bitcoind.cpp
 #
 
 if TARGET_WINDOWS
