@@ -18,7 +18,7 @@ extern std::string strWalletFile;
 extern CWallet* pwalletMain;
 
 void StartShutdown();
-void ShutdownRequested();
+bool ShutdownRequested();
 void Shutdown(void* parg);
 bool AppInit2();
 

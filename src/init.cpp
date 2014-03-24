@@ -43,8 +43,6 @@ enum Checkpoints::CPMode CheckpointsMode;
 // Shutdown
 //
 
-volatile bool fRequestShutdown = false;
-
 void ExitTimeout(void* parg)
 {
 #ifdef WIN32
