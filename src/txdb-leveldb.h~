@@ -27,14 +27,6 @@
 // together when too many files stack up.
 //
 // Learn more: http://code.google.com/p/leveldb/
-
-// -dbcache default (MiB)
-static const int64_t nDefaultDbCache = 100;
-// max. -dbcache in (MiB)
-static const int64_t nMaxDbCache = sizeof(void*) > 4 ? 4096 : 1024;
-// min. -dbcache in (MiB)
-static const int64_t nMinDbCache = 4;
-
 class CTxDB
 {
 public:
