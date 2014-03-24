@@ -18,8 +18,7 @@ extern std::string strWalletFile;
 extern CWallet* pwalletMain;
 
 void StartShutdown();
-bool ShutdownRequested();
-void Shutdown();
+void Shutdown(void* parg);
 bool AppInit2();
 
 /* The help message mode determines what help message to show */
