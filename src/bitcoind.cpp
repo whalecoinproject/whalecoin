@@ -29,7 +29,6 @@
  * Use the buttons <code>Namespaces</code>, <code>Classes</code> or <code>Files</code> at the top of the page to start navigating the code.
  */
 
-static bool fDaemon;
 
 void DetectShutdownThread(boost::thread_group* threadGroup)
 {
@@ -87,8 +86,7 @@ bool AppInit(int argc, char* argv[])
                   "  bitcoind [options] help                " + _("List commands") + "\n" +
                   "  bitcoind [options] help <command>      " + _("Get help for a command") + "\n";
 
-            strUsage += "\n" + HelpMessage(HMM_BITCOIND);
-            strUsage += "\n" + HelpMessageCli(false);
+            strUsage += "\n" + HelpMessage();
 
             fprintf(stdout, "%s", strUsage.c_str());
             return false;
@@ -133,7 +131,7 @@ bool AppInit(int argc, char* argv[])
         SoftSetBoolArg("-server", true);
 
         detectShutdownThread = new boost::thread(boost::bind(&DetectShutdownThread, &threadGroup));
-        fRet = AppInit2(threadGroup);
+        fRet = AppInit2();
     }
     catch (std::exception& e) {
         PrintExceptionContinue(&e, "AppInit()");
@@ -158,7 +156,9 @@ bool AppInit(int argc, char* argv[])
         delete detectShutdownThread;
         detectShutdownThread = NULL;
     }
-    Shutdown();
+    int i  = 99;
+    void * arg = (void*)&i;
+    Shutdown(arg);
 
     return fRet;
 }

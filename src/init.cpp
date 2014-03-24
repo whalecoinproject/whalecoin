@@ -43,6 +43,8 @@ enum Checkpoints::CPMode CheckpointsMode;
 // Shutdown
 //
 
+volatile bool fRequestShutdown = false;
+
 void ExitTimeout(void* parg)
 {
 #ifdef WIN32
@@ -60,6 +62,11 @@ void StartShutdown()
     // Without UI, Shutdown() can simply be started in a new thread
     NewThread(Shutdown, NULL);
 #endif
+}
+
+bool ShutdownRequested()
+{
+    return fRequestShutdown;
 }
 
 void Shutdown(void* parg)
