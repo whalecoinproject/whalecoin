@@ -6,6 +6,7 @@
 #define BITCOIN_INIT_H
 
 #include "wallet.h"
+#include <string>
 
 class CWallet;
 
@@ -28,6 +29,6 @@ enum HelpMessageMode
     HMM_BITCOIN_QT
 };
 
-std::string HelpMessage(HelpMessageMode mode);
+std::string HelpMessage();
 
 #endif

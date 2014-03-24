@@ -624,7 +624,7 @@ public:
     }
 };
 
-bool NewThread(void(*pfn)(void*), void* parg);
+bool NewThread(void(*parg), NULL);
 
 #ifdef WIN32
 inline void SetThreadPriority(int nPriority)
