@@ -3,7 +3,7 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "rpcserver.h"
+#include "bitcoinrpc.h"
 #include "rpcclient.h"
 #include "init.h"
 #include "main.h"
@@ -38,7 +38,7 @@ void DetectShutdownThread(boost::thread_group* threadGroup)
     // Tell the main threads to shutdown.
     while (!fShutdown)
     {
-        MilliSleep(200);
+        Sleep(200);
         fShutdown = ShutdownRequested();
     }
     if (threadGroup)

@@ -56,8 +56,6 @@ netbase.h\
 noui.h\
 protocol.h\
 rpcclient.h\
-rpcprotocol.h\
-rpcserver.h\
 strlcpy.h\
 script.h\
 scrypt_mine.h\
@@ -141,7 +139,6 @@ libbitcoin_common_a_SOURCES = \
   key.cpp \
   netbase.cpp \
   protocol.cpp \
-  rpcprotocol.cpp \
   script.cpp \
   sync.cpp \
   util.cpp \

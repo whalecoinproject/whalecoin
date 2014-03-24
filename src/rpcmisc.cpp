@@ -8,7 +8,7 @@
 #include "main.h"
 #include "net.h"
 #include "netbase.h"
-#include "rpcserver.h"
+#include "bitcoinrpc.h"
 #include "util.h"
 #ifdef ENABLE_WALLET
 #include "wallet.h"

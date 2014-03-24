@@ -55,7 +55,6 @@ BITCOIN_CORE_H = \
   protocol.h \
   rpcclient.h \
   rpcprotocol.h \
-  rpcserver.h \
   script.h \
   serialize.h \
   sync.h \
@@ -90,7 +89,6 @@ version.o: obj/build.h
 libbitcoin_server_a_SOURCES = \
   addrman.cpp \
   alert.cpp \
-  rpcserver.cpp \
   bloom.cpp \
   chainparams.cpp \
   checkpoints.cpp \

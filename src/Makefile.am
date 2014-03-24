@@ -104,7 +104,6 @@ version.o: obj/build.h
 libbitcoin_server_a_SOURCES = \
   addrman.cpp \
   alert.cpp \
-  rpcserver.cpp \
   bloom.cpp \
   bitcoinrpc.cpp\
   chainparams.cpp \
