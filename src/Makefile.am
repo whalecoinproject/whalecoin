@@ -55,7 +55,6 @@ net.h\
 netbase.h\
 noui.h\
 protocol.h\
-rpcclient.h\
 strlcpy.h\
 script.h\
 scrypt_mine.h\
@@ -145,7 +144,6 @@ libbitcoin_common_a_SOURCES = \
   $(BITCOIN_CORE_H)
 
 libbitcoin_cli_a_SOURCES = \
-  rpcclient.cpp \
   $(BITCOIN_CORE_H)
 
 nodist_libbitcoin_common_a_SOURCES = $(top_srcdir)/src/obj/build.h

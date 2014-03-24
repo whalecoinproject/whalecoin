@@ -1,5 +1,4 @@
 #include "bitcoinrpc.h"
-#include "rpcclient.h"
 
 #include "base58.h"
 #include "wallet.h"

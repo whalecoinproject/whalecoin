@@ -169,9 +169,6 @@ HEADERS += src/qt/bitcoingui.h \
     src/scrypt_mine.h \
     src/scrypt.h \
     src/pbkdf2.h \
-    src/rpcclient.h \
-    src/rpcprotocol.h \
-    src/rpcserver.h \
     src/zerocoin/Accumulator.h \
     src/zerocoin/AccumulatorProofOfKnowledge.h \
     src/zerocoin/Coin.h \

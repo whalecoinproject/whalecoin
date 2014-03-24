@@ -169,8 +169,6 @@ HEADERS += src/qt/bitcoingui.h \
     src/scrypt_mine.h \
     src/scrypt.h \
     src/pbkdf2.h \
-    src/rpcclient.h \
-    src/rpcprotocol.h \
     src/zerocoin/Accumulator.h \
     src/zerocoin/AccumulatorProofOfKnowledge.h \
     src/zerocoin/Coin.h \
@@ -280,7 +278,6 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/transactionview.cpp \
     src/qt/walletmodel.cpp \
     src/bitcoinrpc.cpp \
-    src/rpcclient.cpp \
     src/rpcdump.cpp \
     src/rpcmisc.cpp \
     src/rpcnet.cpp \
